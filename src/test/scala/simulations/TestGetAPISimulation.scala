@@ -6,6 +6,9 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scenarios.TestAPIScenario
 
+import scala.concurrent.duration.DurationInt
+import scala.language.postfixOps
+
 
 class TestGetAPISimulation extends Simulation {
 
@@ -13,7 +16,7 @@ class TestGetAPISimulation extends Simulation {
 
   private val testGet = TestAPIScenario.testAPIGet
     .inject(
-      atOnceUsers(10)
+      rampUsersPerSec(1) to 20 during (60 seconds)
     ).protocols(httpConf)
 
   setUp(testGet)

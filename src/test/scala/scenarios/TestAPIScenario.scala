@@ -10,5 +10,4 @@ object TestAPIScenario {
 
   val testAPIPost = scenario("TEST API SCENARIO GET" )
     .exec(TestAPIRequest.testPostAPI)
-
 }

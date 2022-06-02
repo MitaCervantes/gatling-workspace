@@ -11,9 +11,9 @@ class TestPostAPISimulation extends Simulation {
 
   val httpConf = http.baseUrl(baseUrl)
 
-  private val testPost = TestAPIScenario.testAPIGet
+  private val testPost = TestAPIScenario.testAPIPost
     .inject(
-      atOnceUsers(1)
+      atOnceUsers(100)
     ).protocols(httpConf)
 
   setUp(testPost)
