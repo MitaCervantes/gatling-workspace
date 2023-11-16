@@ -8,7 +8,7 @@ object Configuration{
   val urlGetAPI = "api/users/2"
   val urlPostAPI = "api/users"
 
-  val baseUrlFrontend = "https://resume-test.fichap.com/"
+  val baseUrlFrontend = "https://blazedemo.com/"
 
   val token = ""
 

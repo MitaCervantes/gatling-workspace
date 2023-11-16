@@ -16,7 +16,9 @@ class TestGetAPISimulation extends Simulation {
 
   private val testGet = TestAPIScenario.testAPIGet
     .inject(
-      rampUsersPerSec(1) to 20 during (60 seconds)
+      rampUsersPerSec(1) to 40 during (30 seconds),
+      constantUsersPerSec(40) during (40 seconds),
+      rampUsersPerSec(40) to 1 during (30 seconds)
     ).protocols(httpConf)
 
   setUp(testGet)

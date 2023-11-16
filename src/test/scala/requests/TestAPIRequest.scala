@@ -11,7 +11,11 @@ object TestAPIRequest {
     "Content-Type" -> "application/json"
   )
 
-    val testGetAPI = exec(http("request get")
+  private val headersToken = Map(
+    "Authorization" -> "Bearer ${token}"
+  )
+
+  val testGetAPI = exec(http("request get")
       .get(urlGetAPI)
       .headers(headers)
       .check(status.is(200))
@@ -29,6 +33,13 @@ object TestAPIRequest {
     .check(status.is(201))
     .check(jsonPath("$.name").is("mauricio"))
     .check(jsonPath("$.job").is("employee"))
+  )
+
+  val getJson = exec(http("GET Test Json")
+    .post(urlPostAPI)
+    .headers(headers)
+    .body(RawFileBody("requestJson.json")).asJson
+    .check(status.is(200))
   )
 
 }
